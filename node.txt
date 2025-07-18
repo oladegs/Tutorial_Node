@@ -161,3 +161,183 @@ A package is just a 📁 folder that contains:
      - Lists all dependencies
      - Makes collaboration and reinstallation easier
 */
+
+
+After cloning the repository using git clone <repo-url>, run npm install to install all dependencies and generate the node_modules folder.
+
+🔧 Why We Run npm install
+Efficiency:
+node_modules contains all the packages the project depends on—but it can be huge (often hundreds of MBs). To avoid bloating the repo, it’s excluded using .gitignore.
+
+Dependencies in package.json:
+The project has a package.json file that lists all the dependencies it needs.
+When you run npm install, it reads that file and downloads the exact versions required.
+
+Ensures Consistency:
+It ensures you and every other developer working on the project have the same tools and libraries installed.
+
+npm i nodemon --save-dev // npm i nodemon --D - we dont need it in production , test packages x formatting 
+
+npm uninstall (package name)
+
+package.json = What you want (version range)
+package-lock.json = Exactly what you got (pinned versions)
+
+So always commit both. They work together to keep your project stable and reproducible.
+
+💡 What is npx?
+npx is a command-line tool that comes with Node.js (via npm 5.2+). It’s used to run Node packages (scripts, tools, CLIs) without needing to install them globally on your system.
+
+🧠 Why Use npx Globally?
+While npx itself is available globally, it helps you:
+Avoid installing global packages you only use once.
+Run consistent versions in team projects.
+Save space (no need to install tons of global tools).
+🧼 Summary
+npx is globally available and designed to run packages without globally installing them.
+
+It keeps your system clean, helps avoid version conflicts, and ensures you're always using the latest tools.
+
+"The version field in package.json acts as a contract between the package maintainer and its users. It follows Semantic Versioning (semver), typically written as major.minor.patch:
+Major version changes indicate breaking changes that may not be backward compatible.
+Minor version changes introduce new features that are backward compatible.
+Patch version changes are reserved for small bug fixes or performance improvements that don’t affect the API."
+
+Backward compatibility (also called backwards compatibility) means that newer versions of a system or software can still work with or support older versions of tools, files, or features.
+
+** Try to understand Node.js - JS
+JS executes all the lines before callback functions 
+
+Non-Blocking in JS - event loop
+Event loop registers the callback and only when the operation is done , it executes it 
+
+We are running immediate tasks first  and only then we run the callbacks
+Requests are coming in - operation complete - first Register CB -  operation complete - we first registered the callback - operation completed again -  instead of executing the call back right away - it effectively gets put at the end of the line and when there us no immediate code to run then we exceute the callback 
+
+With the help of event loop, we can offload some time consuming operations and keep all our users happy 
+
+=================================================
+
+🧠 How the Event Loop Works (Simplified Explanation)
+The event loop is like a traffic controller. It makes sure that the JavaScript engine runs all the immediate code (synchronous code) first, and only after that, it runs any callback functions from things like timers, network requests, or file reads.
+
+✅ Step-by-Step Flow:
+Immediate Code Runs First (Synchronous)
+These are top-level lines of code that execute one after the other in the main thread.
+
+Async Operation Begins (like reading a file or fetching data)
+While this is running in the background (via Web APIs or Node APIs), the main thread keeps running other code.
+
+Callback Gets Registered
+Once the async operation is done, its callback gets added to the callback queue.
+
+Event Loop Checks:
+Is the main thread (call stack) empty?
+If yes, it picks a callback from the queue and pushes it to the call stack to be executed.
+
+🎯 Key Point: Why It’s Non-Blocking
+Even though async code (like file reading) takes time, the event loop doesn't block the main thread. It lets the app keep responding to users while heavy tasks run in the background. Once they're done, their callbacks wait patiently until the engine is ready.
+
+📝 Polished Version of Your Explanation:
+The event loop registers a callback when an asynchronous operation starts. Once that operation completes, the callback doesn’t run immediately—it’s placed in a queue. JavaScript continues to run immediate tasks (synchronous code) first. Only when there’s nothing left in the main call stack does the event loop push the callback to the stack for execution.
+
+This design allows JavaScript to offload long-running tasks (like network requests or file access) and keep the application fast and responsive for users.
+
+Main Thread (Call Stack)
+  ↓
+[ Run sync code ]
+  ↓
+[ Start async op ]
+  ↓
+[ Continue sync code ]
+  ↓
+[ Async op done → callback → put in queue ]
+  ↓
+[ Main thread empty? Yes → run callback ]
+
+JS is a single-threaded non-blocking aynchronous concurrent language, I have a call stack, an event loop , a callback queue and some other apis 
+2:38:14
+
+🌐 Browser-Provided Tools (Outside V8):
+🧩 Web APIs (not part of JS, but accessible from JS):
+setTimeout, setInterval ⏱️ — for timing
+
+fetch / XMLHttpRequest 🌍 — for network requests
+DOM (Document Object Model) 🏗️ — to manipulate HTML & CSS
+EventTarget & addEventListener 🎯 — to handle events like clicks
+Geolocation API 📍 — get user location
+Web Storage API 🗄️ — localStorage, sessionStorage
+WebSockets 📡 — for real-time connections
+Canvas API, WebGL 🎨 — for graphics & game development
+WebRTC 🎥 — for video/audio calls
+Notifications API 🔔 — push notifications
+Service Workers 👷 — for background scripts
+Crypto API 🔐 — for secure random values & hashing
+
+🛠️ Browser Dev Tools (For developers, not part of JS runtime)
+Console 👨‍💻 — to log/debug code
+Network tab 🌐 — inspect network requests
+Performance profiler 📊 — analyze code speed
+Storage/IndexedDB viewer 📦
+
+🔄 Summary
+The browser environment gives JavaScript access to extra functionality through built-in APIs — without which things like clicking buttons, fetching data, or rendering graphics wouldn’t work. The V8 engine only handles raw JavaScript logic (like loops, functions, variables), but everything else — timers, DOM, HTTP requests — comes from the browser’s Web APIs and tools.
+
+With the help of event loop, we can offload some time consuming operations 
+
+🧠 Where is the Event Loop in the Browser?
+The Event Loop lives in the browser's JavaScript runtime environment, not inside the JavaScript engine itself (like V8). It’s part of the Web APIs and task scheduling system that the browser provides to support asynchronous behavior.
+
+🏗️ Breakdown of Where It Lives:
+✅ JavaScript Engine (like V8):
+Executes synchronous JS code
+
+Does NOT include setTimeout, DOM, fetch, etc.
+
+Does NOT handle the event loop
+
+✅ Browser Environment (like Chrome, Firefox):
+Provides:
+
+Web APIs (setTimeout, DOM, fetch, etc.)
+
+Callback/task queues
+
+Microtask queue (Promises, MutationObservers)
+
+👉 Event Loop logic
+
+So:
+
+🌀 The Event Loop is part of the browser, not the V8 engine. It coordinates the execution of the callback queues and ensures your JS runs smoothly.
+
+
++-------------------+          +--------------------+
+|   JavaScript Code |          |  Web APIs (Timer,  |
+|     (V8 Engine)   | <------> |  Fetch, DOM, etc.) |
++-------------------+          +--------------------+
+         ↑                                ↓
+         |                          callback set
+         ↓                                ↓
+     +-----------------------------------------+
+     |         Browser's Event Loop System     |
+     |-----------------------------------------|
+     | 1. Call Stack                           |
+     | 2. Callback Queue (macrotasks)          |
+     | 3. Microtask Queue (promises)           |
+     +-----------------------------------------+
+         ↓
+   Executes tasks in order
+
+🧪 What Exactly Does the Event Loop Do?
+It:
+
+Checks if the Call Stack is empty
+
+If empty:
+
+Takes the first task from the microtask queue (like .then() from Promises) and runs it
+
+If no microtasks, it takes a task from the callback queue (like from setTimeout)
+
+Repeats forever...
