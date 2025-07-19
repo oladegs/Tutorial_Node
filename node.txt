@@ -341,3 +341,9 @@ Takes the first task from the microtask queue (like .then() from Promises) and r
 If no microtasks, it takes a task from the callback queue (like from setTimeout)
 
 Repeats forever...
+✅ How to avoid blocking code?
+If you're doing something time-consuming:
+
+- Use asynchronous functions (like reading files with fs.promises)
+- Offload heavy computation to worker threads or a separate process
+- Consider using queues or caching if possible
