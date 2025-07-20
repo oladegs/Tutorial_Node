@@ -48,55 +48,30 @@
      - Makes collaboration and reinstallation easier
 */
 
-const { readFile, writeFile } = require("fs").promises;
-// const util = require("util");
-// const readFilePromise = util.promisify(readFile);
-// const writeFilePromise = util.promisify(writeFile);
+// Import the built-in 'http' module to create an HTTP server
+var http = require("http");
 
-// Replacement for this is the util.promisify
-// const getText = (path) => {
-//   return new Promise((resolve, reject) => {
-//     readFile(path, "utf8", (err, data) => {
-//       if (err) {
-//         reject(err);
-//       } else {
-//         resolve(data);
-//       }
-//     });
-//   });
-// };
+// Import the built-in 'fs' (file system) module to work with the file system
+var fs = require("fs");
+const { error } = require("console");
 
-const start = async () => {
-  try {
-    // const first = await readFilePromise("./content/first.txt", "utf8");
-    // const second = await readFilePromise("./content/second.txt", "utf8");
+// Create an HTTP server
+http
+  .createServer(function (req, res) {
+    // // Read the content of 'big.txt' synchronously (blocking)
+    // const text = fs.readFileSync("./content/big.txt", "utf8");
+    // // Send the content of the file as the HTTP response
+    // res.end(text);
 
-    const first = await readFile("./content/first.txt", "utf8");
-    const second = await readFile("./content/second.txt", "utf8");
+    const fileStream = fs.createReadStream("./content/big.txt", "utf8");
+    fileStream.on("open", () => {
+      // Pipe pushes from the read stream into write stream, if we can read data in chunks , we can also write data in chunks - response object can be setup as a writable stream
+      fileStream.pipe(res);
+    });
 
-    // ✅ Don't pass 'utf8' here – it's not needed for writeFile when using a string
-    await writeFile(
-      "./content/result-mind-grenade.txt",
-      `THIS IS AWESOME : ${first}, ${second}`,
-      { flag: "a" }
-    );
-
-    console.log(first, second);
-  } catch (error) {
-    console.error(error);
-  }
-};
-start();
-
-// getText("./content/first.txt")
-//   .then((result) => console.log(result))
-//   .catch((err) => console.log(err));
-
-// Initial setup
-// readFile("./content/first.txt", "utf8", (err, data) => {
-//   if (err) {
-//     return;
-//   } else {
-//     console.log(data);
-//   }
-// });
+    fileStream.on("error", (err) => {
+      res.end(err);
+    });
+  })
+  // Listen for incoming requests on port 5000
+  .listen(5000);

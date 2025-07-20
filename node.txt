@@ -347,3 +347,65 @@ If you're doing something time-consuming:
 - Use asynchronous functions (like reading files with fs.promises)
 - Offload heavy computation to worker threads or a separate process
 - Consider using queues or caching if possible
+
+In Node.js, we listen for specific events and register functions — called callbacks — that execute in response when those events occur. Once the event is triggered, the callback function runs, just like how a function is fired when a button is clicked in a browser.
+
+Streams in Nodejs are used to read or write sequentially, basically when we have to handle and manipulate streaming data for example continous source or a big file , streams come in real handy 
+
+📘 What Are Streams in Node.js?
+Streams in Node.js are powerful tools used to read or write data sequentially—piece by piece, rather than all at once.
+
+🔁 When Do We Use Streams?
+Streams are especially useful when you're dealing with:
+📂 Large files (e.g., video or log files)
+🌊 Continuous data (e.g., live audio/video feeds, real-time logs)
+📡 Data from external sources (e.g., network sockets, APIs)
+
+⚙️ Why Are Streams Useful?
+Imagine reading a 500MB file:
+❌ Without streams: Node.js loads the entire file into memory, which could crash your app.
+✅ With streams: Node.js reads the file in chunks, handling one part at a time.
+
+🧩 Types of Streams
+🔽 Readable – For reading data (e.g., fs.createReadStream)
+🔼 Writable – For writing data (e.g., fs.createWriteStream)
+🔁 Duplex – Both readable and writable (e.g., sockets)
+🔄 Transform – Modify or transform data as it passes through (e.g., compression)
+
+🧠 How Request & Response Work:
+When you open a browser and type a URL (like www.example.com), you're starting a conversation with a web server. This interaction follows the HTTP protocol, and it works like this:
+
+🌐 1. Request (from the browser to the server):
+The browser sends an HTTP request to the server.
+
+It’s like saying:
+“Hey server, can I please have the homepage?”
+
+This request contains information such as:
+The method (e.g., GET, POST)
+The URL/path (e.g., /about)
+Headers (details about the browser, acceptable response formats, etc.)
+Body (for methods like POST, carrying form data or JSON)
+----------
+🖥️ 2. Response (from the server back to the browser):
+The server checks the request, finds the resource, and sends an HTTP response.
+
+It’s like saying:
+“Sure! Here's the homepage you asked for.”
+
+The response contains:
+Status code (200 OK, 404 Not Found, etc.)
+Headers (content type, length, etc.)
+Body (actual HTML, JSON, file, etc.)
+
+💬 Rephrased Version (with a visual-style explanation):
+HTTP Messages are how browsers and servers talk to each other using the HTTP protocol.
+When you visit a website, your browser sends a request—like saying,
+“Hey server, can I get this data?”
+The server responds with the resource—like replying,
+“Here you go, here’s the data you asked for!”
+This back-and-forth exchange of messages is what allows the web to function and load pages, images, or data dynamically.
+
+HTTP Messages - This is done with HTTP Protocol , the user sends the http request like hey can i get this data and server responsible for those resources sends you back the response now and thats how we exchange data on web 
+
+The remainder of the course is for building such web server using node and more specifically express.
