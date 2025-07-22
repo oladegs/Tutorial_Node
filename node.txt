@@ -406,6 +406,23 @@ The server responds with the resource—like replying,
 “Here you go, here’s the data you asked for!”
 This back-and-forth exchange of messages is what allows the web to function and load pages, images, or data dynamically.
 
-HTTP Messages - This is done with HTTP Protocol , the user sends the http request like hey can i get this data and server responsible for those resources sends you back the response now and thats how we exchange data on web 
-
 The remainder of the course is for building such web server using node and more specifically express.
+
+=============
+Web APIs / HTTP Requests:
+When a client (like a browser or app) sends a request to a server:
+
+The payload is the data sent in the body of the request (usually in POST or PUT).
+
+Example (JSON payload):
+
+json
+Copy
+Edit
+{
+  "username": "farouk",
+  "password": "mypassword123"
+}
+2. HTTP Responses:
+When the server responds, the payload is the main data being returned (like HTML, JSON, or an image), not the response headers.
+
