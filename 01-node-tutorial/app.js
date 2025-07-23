@@ -41,11 +41,8 @@
      npm install <package-name>
 
 ---------------------------------------
-
  📌 Why package.json matters:
      - Describes your project
      - Lists all dependencies
      - Makes collaboration and reinstallation easier
 */
-
-// 3:58:30

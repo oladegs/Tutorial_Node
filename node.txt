@@ -426,3 +426,12 @@ Edit
 2. HTTP Responses:
 When the server responds, the payload is the main data being returned (like HTML, JSON, or an image), not the response headers.
 
+📌 8 Essential Steps to Complete a Software Project
+1️⃣ Planning / Requirement Gathering ➡️
+2️⃣ Design ➡️
+3️⃣ Development ➡️
+4️⃣ Testing ➡️
+5️⃣ Build (Production-Ready Version) ➡️
+6️⃣ Deployment (Production Phase) ➡️
+7️⃣ Monitoring & Maintenance ➡️
+8️⃣ Iterate ✅
