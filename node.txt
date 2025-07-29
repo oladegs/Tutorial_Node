@@ -525,3 +525,110 @@ You can think of it this way:
 Static = unchanged files served directly (like images, CSS, JS).
 The server does not modify or generate them.
 The browser runs the JavaScript, not the server.
+
+Express.js - API vs SSR 
+When it comes to express , you would use it in one of the following options:
+- Either to set up API : We mean setting up an http interface to interact with our data 
+and data is sent using JSON and in order to send back our response, we are going to use res.json method which would do all the heavy lifting like content-type and strigify our data. Main point of API is that our server provides data to the front end 
+
+- SSR - Template : We would setup template and send back the entire html and css and JS ourselves and we are going to do that using res.render method 
+
+=======================================
+⚙️ Express.js – Two Main Usages
+1️⃣ 🔁 API (Application Programming Interface)
+📌 Purpose:
+Provide data to the frontend (like React, Angular, Vue, mobile apps, etc.)
+
+📥 Client Request →
+🖥️ Express Server processes it →
+📤 Responds with JSON
+res.json({ name: "Farouk", age: 22 });
+
+✅ res.json:
+Sets Content-Type: application/json
+Automatically JSON.stringify() your data
+Ideal for REST APIs
+You manage just the data, not the UI
+
+2️⃣ 🖼️ SSR (Server-Side Rendering with Templates)
+📌 Purpose:
+Send the full HTML page directly from the server.
+
+📥 Client Request →
+🖥️ Express Server uses a template engine (e.g., EJS, Pug) →
+📤 Responds with HTML + CSS + JS
+
+res.render("home", { username: "Farouk" });
+
+✅ res.render:
+Uses a template file (.ejs, .pug, etc.)
+Fills in dynamic values (e.g., username)
+Sends complete HTML to browser
+Ideal for traditional websites
+
+
+A REST API (short for Representational State Transfer Application Programming Interface) is a way for different software systems to communicate over the web using standard HTTP methods like:
+
+GET → to retrieve data
+POST → to create data
+PUT → to update data
+DELETE → to remove data
+
+✅ REST API Principles:
+Stateless – Each request stands alone (no memory of previous ones).
+Resource-based – Everything is treated as a resource (e.g., users, books).
+Uses standard HTTP methods.
+Data format: Mostly JSON.
+
+======================================================================================
+- Think of route parameters as a placeholder where user provides a data and then using requests and params we can access that data and then set up some kind of logic 
+
+- req.params is an object in Express that holds route parameters — values from the URL defined with :.
+app.get("/users/:id", (req, res) => {
+  console.log(req.params.id); // gets the value in place of :id
+});
+req.params = { id: '42' }
+It’s used to capture dynamic values from the URL path.
+
+Query String Parameters - URL paramaters - that is a way to send small amounts of information to the server using the url - this information is usually used as parameters for example query database or filter results 
+
+🔍 What are Query String Parameters?
+They are a way to send small pieces of data to the server via the URL, usually to:
+ 
+Filter results
+Search a database
+Sort content
+
+📌 Structure of a URL with Query String
+https://example.com/products?category=shoes&color=black
+🔹 Breakdown:
+?         👉 Starts the query string
+category=shoes   👉 key=value pair
+&         👉 Separates multiple key-value pairs
+color=black     👉 Another key=value pair
+
+🧠 Use Case Example:
+Imagine you're building a product search:
+app.get('/products', (req, res) => {
+  console.log(req.query); // { category: 'shoes', color: 'black' }
+});
+
+So, from this URL:
+/products?category=shoes&color=black
+You can filter your product list on the server based on:
+category = shoes
+color = black
+
+✅ Summary:
+Used in GET requests
+Appended to the URL after a ?
+Accessed via req.query in Express
+
+Example: /search?term=apple&limit=10
+→ req.query = { term: 'apple', limit: '10' }
+
+If the user wants to search for a specific product he or she needs to provide that search query parameter as well as limiting where the user can limit of how many products they are getting back 
+
+You cannot send two responses in the same request , one after the another 
+
+6:11 - Middleware 
