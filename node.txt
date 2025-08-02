@@ -415,10 +415,6 @@ When a client (like a browser or app) sends a request to a server:
 The payload is the data sent in the body of the request (usually in POST or PUT).
 
 Example (JSON payload):
-
-json
-Copy
-Edit
 {
   "username": "farouk",
   "password": "mypassword123"
@@ -426,6 +422,7 @@ Edit
 2. HTTP Responses:
 When the server responds, the payload is the main data being returned (like HTML, JSON, or an image), not the response headers.
 
+============================================================
 📌 8 Essential Steps to Complete a Software Project
 1️⃣ Planning / Requirement Gathering ➡️
 2️⃣ Design ➡️
@@ -722,3 +719,29 @@ Then it fetches the user's details from the database.
 Adds it to req.user.
 The route handler uses req.user to tailor the response.
 =========================================
+✅ What is Axios?
+Axios is a JavaScript library used to make HTTP requests (like GET, POST, PUT, DELETE) from the browser or Node.js.
+
+🔍 What does Axios do?
+It helps your JavaScript code talk to a backend (like an API or a server). Axios sends and receives data in JSON format by default.
+
+🚀 What is Postman?
+Postman is a free API testing tool that lets you easily send HTTP requests (like GET, POST, PUT, DELETE) to a backend and see the response without writing any code.
+
+Think of it as a remote control for your server APIs — it helps you test, debug, and document your APIs quickly.
+
+🛠️ What can you do with Postman?
+✅ Send API requests with any method (GET, POST, etc.)
+✅ Add headers, params, and body data easily
+✅ See response status, headers, and body instantly
+✅ Save and organize your API requests into collections
+✅ Run automated test scripts (e.g. checking if status code is 200)
+✅ Share requests with teammates
+
+⏱️ How does it save us time?
+Without Postman (Manually)	                      With Postman
+Write code just to test an endpoint	              Just click “Send”
+Add headers and body manually in code	            Use built-in input fields
+Use console.log() to debug	           See response, status, headers in one screen
+Restart server/app to check a small change	  Instantly re-test by sending again
+Harder to test edge cases quickly	      Easily change inputs, test different cases
