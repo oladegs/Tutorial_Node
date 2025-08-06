@@ -1,0 +1,60 @@
+0:2:50 - TASK MANAGER
+0:9:30 -  Express SetUp
+0:18:50 - Routes Folder
+0:22:50 - Controllers Folder
+0:28:34 - Postman Setup
+0:37:42 - Rest API Explanation
+0:41:42 - MongoDb Explanation and Set Up
+0:57:17 - Mongoose connection
+1:16:20 - Mongoose Schema
+1:42:20 - Mongoose CRUD operations
+2:20:20 - Put vs Patch
+2:26:50 - Different Response Style
+2:32:20 - Route Not Found
+2:36:35 - Async Wrappers for try/catch
+2:46:20 - Catching Errors
+2:52:20 - 404 Custom Errors
+3:05:20 - Port Variable Setting
+
+					3:07:10 - STORE API
+3:12:30 -  Express SetUp
+3:18:30 -  Connect to database
+3:22:30 -  Controllers and Routes Setup
+3:27:30 -  Postman Setup
+3:29:30 -  express-async-errors
+3:33:30 -  Schema models
+3:41:30 -  Automating adding to database
+3:51:30 -  Mongoose Filter Methods
+4:20:30 -  Mongoose sort filter
+4:35:30 -  Mongoose select filter
+4:38:30 -  Mongoose skip and limit filter
+4:50:30 -  Mongoose numeric filter
+
+					5:05:30 - JWT BASICS
+5:15:18 -  Controllers and Routes Setup
+5:21:00 -  Postman Setup
+5:32:30 -  Jsonwebtoken Explanation and Setup
+5:52:30 -  authorization header setup 
+6:03:30 -  auth middleware
+6:13:30 -  Handling Errors
+6:19:30 -  Status codes
+
+					6:28:24 - JOBS API
+6:37:43 -  Controllers and Routes Setup
+6:47:07 -  Connect to Db
+6:49:43 -  Schema models
+6:57:09 -  Postman Setup
+7:05:43 -  Hashing Passwords with bcryptjs
+7:15:00 -  Mongoose pre save
+7:21:00 -  Generate token with jwt
+7:27:56 -  Schema methods
+7:34:00 -  All keys generator and .env
+7:52:00 -  auth middleware
+7:15:00 -  Mongoose pre save
+8:10:00 -  Mongoose ObjectId
+8:24:50 -  Dynamically setting authorization header
+8:48:50 -  Handling Mongoose Validation Errors
+9:09:50 -  Security
+9:15:50 -  Hosting
+9:32:50 -  Setting Postman web routes
+9:34:50 -  Swagger Documentation

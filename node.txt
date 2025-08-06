@@ -745,3 +745,5 @@ Add headers and body manually in code	            Use built-in input fields
 Use console.log() to debug	           See response, status, headers in one screen
 Restart server/app to check a small change	  Instantly re-test by sending again
 Harder to test edge cases quickly	      Easily change inputs, test different cases
+
+Aug-6!
