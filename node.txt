@@ -1,4 +1,4 @@
-Node.js works at the backend - serverside runtime -  is a runtime environment which works on a stand-alone machine, it  is related with the server side component - it has a lot of internal and external modules like the HTTP module, npm (packages and modules) - it is javascript runtime environment which uses the V8 javascript engine 
+Node.js works at the backend - serverside runtime -  is a runtime environment which works on a stand-alone machine, it is related with the server side component - it has a lot of internal and external modules like the HTTP module, npm (packages and modules) - it is javascript runtime environment which uses the V8 javascript engine 
 
 Expressjs is a framework for Node.js used for the backend for developing web side applications
 
@@ -11,6 +11,7 @@ Google V8 is the high-speed engine that runs JavaScript code in Google Chrome an
 
 🌐 What is Node.js?
 🔧 A runtime for JavaScript on the server-side
+
 🔁 Before Node.js:
 JavaScript was mostly used in the browser (client-side) only.
 
@@ -34,10 +35,10 @@ Node.js = 🧠 + 🔥 + 📦
 
 🚀 What is Express.js?
 Express.js is a framework built on top of Node.js.
-Concept	Symbol	Meaning
-Express.js	🏗️ Blueprint	Helps you build backend systems faster and easier
-Based on Node.js	🧠🔧	Uses all of Node's power, just with helpful shortcuts
-Build web apps	🖥️🌐	Helps create APIs, web servers, handle forms, etc.
+Concept	Symbol	      Meaning
+Express.js	         🏗️ Blueprint	Helps you build backend systems faster and easier
+Based on Node.js	   🧠🔧	Uses all of Node's power, just with helpful shortcuts
+Build web apps	     🖥️🌐	Helps create APIs, web servers, handle forms, etc.
 
 🧩 Express + Node Together:
 Tool	-	Role
@@ -53,6 +54,7 @@ Node.js provides with features like Non-Blocking I/O, npm
 NPM - Node Package Manager 
 
 A server is a computer or software that listens for and responds to requests—usually from web browsers or other devices.
+
 🧠 In simple terms:
 A server is like a waiter at a restaurant. You (the client) ask for something (like a webpage), and the server brings it to you.
 
@@ -193,9 +195,9 @@ While npx itself is available globally, it helps you:
 Avoid installing global packages you only use once.
 Run consistent versions in team projects.
 Save space (no need to install tons of global tools).
+
 🧼 Summary
 npx is globally available and designed to run packages without globally installing them.
-
 It keeps your system clean, helps avoid version conflicts, and ensures you're always using the latest tools.
 
 "The version field in package.json acts as a contract between the package maintainer and its users. It follows Semantic Versioning (semver), typically written as major.minor.patch:
@@ -255,13 +257,11 @@ Main Thread (Call Stack)
   ↓
 [ Main thread empty? Yes → run callback ]
 
-JS is a single-threaded non-blocking aynchronous concurrent language, I have a call stack, an event loop , a callback queue and some other apis 
-2:38:14
+JS is a single-threaded non-blocking asynchronous concurrent language, I have a call stack, an event loop , a callback queue and some other apis 
 
 🌐 Browser-Provided Tools (Outside V8):
 🧩 Web APIs (not part of JS, but accessible from JS):
 setTimeout, setInterval ⏱️ — for timing
-
 fetch / XMLHttpRequest 🌍 — for network requests
 DOM (Document Object Model) 🏗️ — to manipulate HTML & CSS
 EventTarget & addEventListener 🎯 — to handle events like clicks
@@ -291,27 +291,18 @@ The Event Loop lives in the browser's JavaScript runtime environment, not inside
 🏗️ Breakdown of Where It Lives:
 ✅ JavaScript Engine (like V8):
 Executes synchronous JS code
-
 Does NOT include setTimeout, DOM, fetch, etc.
-
 Does NOT handle the event loop
 
 ✅ Browser Environment (like Chrome, Firefox):
 Provides:
-
 Web APIs (setTimeout, DOM, fetch, etc.)
-
 Callback/task queues
-
 Microtask queue (Promises, MutationObservers)
-
 👉 Event Loop logic
-
 So:
 
 🌀 The Event Loop is part of the browser, not the V8 engine. It coordinates the execution of the callback queues and ensures your JS runs smoothly.
-
-
 +-------------------+          +--------------------+
 |   JavaScript Code |          |  Web APIs (Timer,  |
 |     (V8 Engine)   | <------> |  Fetch, DOM, etc.) |
@@ -331,13 +322,10 @@ So:
 
 🧪 What Exactly Does the Event Loop Do?
 It:
-
 Checks if the Call Stack is empty
 
 If empty:
-
 Takes the first task from the microtask queue (like .then() from Promises) and runs it
-
 If no microtasks, it takes a task from the callback queue (like from setTimeout)
 
 Repeats forever...
@@ -400,6 +388,7 @@ Body (actual HTML, JSON, file, etc.)
 
 💬 Rephrased Version (with a visual-style explanation):
 HTTP Messages are how browsers and servers talk to each other using the HTTP protocol.
+
 When you visit a website, your browser sends a request—like saying,
 “Hey server, can I get this data?”
 The server responds with the resource—like replying,
@@ -408,7 +397,7 @@ This back-and-forth exchange of messages is what allows the web to function and 
 
 The remainder of the course is for building such web server using node and more specifically express.
 
-=============
+============================================================
 Web APIs / HTTP Requests:
 When a client (like a browser or app) sends a request to a server:
 
@@ -423,6 +412,7 @@ Example (JSON payload):
 When the server responds, the payload is the main data being returned (like HTML, JSON, or an image), not the response headers.
 
 ============================================================
+
 📌 8 Essential Steps to Complete a Software Project
 1️⃣ Planning / Requirement Gathering ➡️
 2️⃣ Design ➡️
@@ -433,7 +423,7 @@ When the server responds, the payload is the main data being returned (like HTML
 7️⃣ Monitoring & Maintenance ➡️
 8️⃣ Iterate ✅
 
-=====================================================
+============================================================
 ✅ Why We Need Express
 
 💻 Using Just the http Module:
@@ -474,7 +464,7 @@ Express simplifies the process of building a full web app by:
 If you want a specific version : 
 npm install express@4.17.1 --save
 
----------------------------------------------------
+========================================================================================================================
 function createApp() {
   return {
     get: function () {},
@@ -490,16 +480,16 @@ const app = express();          // Returns an object with .get, .post, etc.
 🔊 app.listen = start the server on port 5000
 
 🔧 Core Routing & Middleware Methods
-Method	          Visual Description	                     Purpose
-app.get()	    📥GET /home → Show a page or data	          Read data or load a page
-app.post()	  ✉️ POST /submit → Send form/data to server	Submit/create new data
-app.put()	    📝PUT /update → Replace a record	     Update or replace existing data
-app.delete()	❌ DELETE /item → Remove something.	    Delete data from the server
-app.all()	    🔄 Matches all HTTP methods for a route.	Catch-all route handler
-app.use()	    🧱 Middleware for all requests (logging, static, etc.)	Pre-process requests globally or by path
-app.listen()	🔊 Start the server and wait for requests	   Boot up your app on a port
+Method	          Visual Description	                            Purpose
+app.get()	    📥GET /home → Show a page or data	                 Read data or load a page
+app.post()	  ✉️ POST /submit → Send form/data to server	       Submit/create new data
+app.put()	    📝PUT /update → Replace a record	                 Update or replace existing data
+app.delete()	❌ DELETE /item → Remove something.	              Delete data from the server
+app.all()	    🔄 Matches all HTTP methods for a route.	         Catch-all route handler
+app.use()	    🧱 Middleware for all requests (logging, static)	 Pre-process requests globally or by path
+app.listen()	🔊 Start the server and wait for requests	         Boot up your app on a port
 
-
+========================================================================================================================
 Think of middleware as a pipeline — every request goes through it before reaching your route logic.
 
 🔁 Request Flow Diagram (Simplified)
@@ -512,6 +502,20 @@ Client ➡️ app.use() ➡️ Route Matching:
                       ↓
                 app.listen()
 
+A middleware is like a helper layer that sits between the request coming into your app and the final response going out.
+
+In simple terms:
+👉 A request comes in → passes through middleware(s) → reaches the controller/route → response goes back through middleware → sent to the client.
+
+You can describe it as:
+A function that runs before your main logic (or after, depending on how you use it).
+It can check, modify, or stop the request/response.
+
+Examples: authentication check, logging, validating input, error handling.
+
+Analogy:
+Imagine middleware as security checkpoints at an airport. Before you get to the gate (controller), you go through ID check, baggage scan, etc. Each checkpoint is middleware, deciding whether to let you through, modify your path, or stop you entirely.
+============================================================
 "A static file is a file that the server serves directly to the client without modifying or processing it."
 "Static files(assets) are files that the server sends as-is, without changing them."
 Examples include HTML, CSS, JavaScript, images, fonts, etc.
@@ -530,7 +534,7 @@ and data is sent using JSON and in order to send back our response, we are going
 
 - SSR - Template : We would setup template and send back the entire html and css and JS ourselves and we are going to do that using res.render method 
 
-=======================================
+========================================================================================================================
 ⚙️ Express.js – Two Main Usages
 1️⃣ 🔁 API (Application Programming Interface)
 📌 Purpose:
@@ -564,6 +568,18 @@ Sends complete HTML to browser
 Ideal for traditional websites
 
 
+-------------------
+API vs SSR in Express.js (Concise):
+API (Application Programming Interface):
+Express handles data only. It sends/receives JSON, and the frontend is separate (e.g., React, mobile app).
+
+SSR (Server-Side Rendering):
+Express renders HTML pages using templates (e.g., EJS, Pug) and sends them to the browser. The frontend and backend are together.
+
+Summary:
+API = data only (JSON)
+SSR = full HTML pages rendered on the server
+============================================================
 A REST API (short for Representational State Transfer Application Programming Interface) is a way for different software systems to communicate over the web using standard HTTP methods like:
 
 GET → to retrieve data
@@ -577,6 +593,17 @@ Resource-based – Everything is treated as a resource (e.g., users, books).
 Uses standard HTTP methods.
 Data format: Mostly JSON.
 
+Mostly used today: ✅ API
+Why:
+Modern apps use frontend frameworks (like React, Angular, Vue) that talk to a backend API.
+APIs are reusable, scalable, and work well with mobile apps, SPAs, and microservices.
+
+When SSR is still used:
+SEO-heavy sites (blogs, e-commerce, landing pages)
+
+Faster initial load (e.g., with Next.js, which supports hybrid API + SSR)
+
+🔹 Trend: API (especially with REST or GraphQL) is dominant in modern web development.
 ======================================================================================
 - Think of route parameters as a placeholder where user provides a data and then using requests and params we can access that data and then set up some kind of logic 
 
@@ -628,7 +655,7 @@ If the user wants to search for a specific product he or she needs to provide th
 
 You cannot send two responses in the same request , one after the another 
 
-6:11 - Middleware 
+========================================================================================================================
 Middleware in express.js - they are functions that execute during the request to the server, each middleware function has access to request and response objects and when it comes literally sky is the limit 
 
 🧩 What is Middleware in Express.js?
@@ -673,10 +700,10 @@ Either you terminate or pass it on to the next middleware
 
 
 📦 Why is logger in the middle?
+
 Because in Express:
 app.get(path, middleware, handler)
 path: The URL to match (e.g., /)
-
 middleware: A function that runs before the final request handler
 handler: The function that sends the response (res.send(...))
 
@@ -718,13 +745,15 @@ If valid, it decodes the user ID from the token.
 Then it fetches the user's details from the database.
 Adds it to req.user.
 The route handler uses req.user to tailor the response.
-=========================================
+
+=================================================================================================
 ✅ What is Axios?
 Axios is a JavaScript library used to make HTTP requests (like GET, POST, PUT, DELETE) from the browser or Node.js.
 
 🔍 What does Axios do?
 It helps your JavaScript code talk to a backend (like an API or a server). Axios sends and receives data in JSON format by default.
 
+=================================================================================================
 🚀 What is Postman?
 Postman is a free API testing tool that lets you easily send HTTP requests (like GET, POST, PUT, DELETE) to a backend and see the response without writing any code.
 
@@ -742,8 +771,129 @@ Think of it as a remote control for your server APIs — it helps you test, debu
 Without Postman (Manually)	                      With Postman
 Write code just to test an endpoint	              Just click “Send”
 Add headers and body manually in code	            Use built-in input fields
-Use console.log() to debug	           See response, status, headers in one screen
-Restart server/app to check a small change	  Instantly re-test by sending again
-Harder to test edge cases quickly	      Easily change inputs, test different cases
+Use console.log() to debug	                      See response, status, headers in one screen
+Restart server/app to check a small change	      Instantly re-test by sending again
+Harder to test edge cases quickly	                Easily change inputs, test different cases
+=================================================================================================
+Since we'll be sending JSON from our application ie when we are creating a new task and since I want to access that data in my routes, what do we need to do, of course is get middleware that is built into Express and that middleware is Express JSON
 
-Aug-6!
+- Always test your api's before moving on , it would give you problems moving forward 
+
+- In MongoDB, we can simply store everything as JSON. Instead of tables we have collections - which represent group of items, instead of rows, we have documents - which represent single item. 
+
+- Once we deploy our project to Heroku, you will need to use access from anywhere option 
+
+- MongoDB has a dynamic schema - Documents in the same collection dont need to have the same set of fields or the structure
+
+- Package by the name Mongoose - Is an object modeling library, it makes our dev faster , it has extremely straightforward API and basically does all the heavy lifting 
+=================================================================================================
+Mongoose is an ODM (Object Data Modeling) library for MongoDB and Node.js.
+
+It helps you:
+Define the structure of your MongoDB documents using schemas.
+Enforce data validation and rules.
+Work with MongoDB data using JavaScript objects instead of raw queries.
+Provide built-in helper methods for common database operations like find, update, delete.
+
+If we have a function in a module where the function is effectively executed there, and then we only need to import meaning require the module and we'll right away execute the function 
+
+----------------------------
+1. Schema → The blueprint (structure + rules) for a MongoDB document.
+   It says what fields exist and how they should look.
+   Doesn’t talk to the database directly.
+
+2. Model → The constructor made from a schema.
+   It’s what you actually use to create, read, update, and delete documents.
+   Linked to a specific collection in MongoDB.
+
+   - Only the properties we specify in our schema would be passed on to the database and everything else is going to be ignored 
+
+=================================================================================================
+- PATCH is better when you want to update only part of a resource (e.g., just the completed status of a task). It’s lighter and avoids overwriting fields you didn’t mean to change.
+- PUT is better when you want to replace the entire resource with new data, ensuring consistency.
+
+👉 Example:
+If you’re editing a user profile and only updating the email → PATCH.
+If you’re uploading a new version of a document that replaces the old one → PUT.
+
+===============================================================
+$env:PORT=3000
+node app.js
+
+That line is a very common Node.js pattern. Let’s break it down:
+const port = process.env.PORT || 3000;
+
+Step by Step:
+process.env.PORT
+In Node.js, process.env is where environment variables live.
+PORT is an environment variable that often tells your app which port to run on.
+
+Example: when deploying to services like Heroku, they assign a random port and inject it into process.env.PORT.
+|| 3000
+This is a logical OR fallback.
+
+If process.env.PORT is not defined (like on your local machine unless you set it), the value will be undefined.
+
+In that case, the app will default to 3000.
+Result (const port = ...)
+port will be whatever process.env.PORT is if it exists.
+Otherwise, it will use 3000.
+
+=====================================================
+Why the await placement changed in getAllProducts() :
+- Before (no sorting), you could just await Product.find(...) directly, since you didn’t need to chain anything.
+
+Now, since you’re building the query in steps (find → sort), you can’t await too early.
+If you await immediately after find, you’d already get the data and wouldn’t be able to sort afterward.
+That’s why you build up the query first, and only await at the very end when it’s fully constructed.
+
+✅ Layman’s analogy:
+Think of Mongoose like a restaurant waiter:
+
+Product.find(...) = telling the waiter what food you want. (Order ticket is written, not cooked yet.)
+.sort(...) = telling the waiter how to arrange the food on the tray. (Still no food yet, just instructions.)
+await = when the waiter actually goes to the kitchen, gets your food, and brings it back. 🍲
+=====================================================
+✅ sort → determines how results are ordered (by price, name, etc.)
+✅ select → determines what fields are shown (like only name, price instead of the full product object).
+
+Check Array Destructuring in JS 
+-------------------------------
+The line:
+const [field, operator, value] = item.split("-");
+
+What it does step by step:
+item.split("-")
+Takes the string item and splits it into an array of substrings wherever there’s a "-".
+
+Example:
+let item = "price-gte-100";
+item.split("-"); // ["price", "gte", "100"]
+
+Array Destructuring const [field, operator, value] = ...
+This takes the array result from split and directly assigns each element to its corresponding variable:
+field gets the first element
+operator gets the second element
+value gets the third element
+
+Example:
+const [field, operator, value] = ["price", "gte", "100"];
+console.log(field);   // "price"
+console.log(operator); // "gte"
+console.log(value);    // "100"
+
+Why this is useful:
+
+Instead of writing:
+let parts = item.split("-");
+let field = parts[0];
+let operator = parts[1];
+let value = parts[2];
+We do it in one concise line.
+
+✅ So in summary:
+That line breaks the string into 3 meaningful variables:
+field → the database field name (price, rating, etc.)
+operator → the comparison operator (gte, lte, eq, etc.)
+value → the numeric value (100, 200, etc.)
+=====================================================
