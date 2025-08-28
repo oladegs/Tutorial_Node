@@ -928,4 +928,64 @@ For example, if you want to use the HMAC SHA256 algorithm, the signature will be
 
 HMACSHA256(base64UrlEncode(header) + "." + base64UrlEncode(payload),secret)
 
-The signature is used to verify the message wasn't changed along the way, and, in the case of tokens signed with a private key, it can also verify that the sender of the JWT is who it says it is.=====================================================
+The signature is used to verify the message wasn't changed along the way, and, in the case of tokens signed with a private key, it can also verify that the sender of the JWT is who it says it is.
+=====================================================
+Authentication vs Authorization
+----------------------------------
+1. Authentication (Who You Are)
+----------------------------------
+🔑 Identity check
+Username + Password
+Fingerprint / Face ID
+OTP (One-time password)
+
+📍 Example:
+At the entrance of a building, you show your ID card to security.
+If it matches → ✅ you’re allowed inside.
+
+[ Person ] ---> [ Security Guard ]
+     |                |
+     |   Shows ID     |
+     |                v
+     +----------- Access granted
+
+----------------------------------
+2. Authorization (What You Can Do)
+----------------------------------
+🔐 Permission check
+Role-based access (User, Admin, Manager)
+Determines which resources or features you can use
+
+📍 Example:
+Once inside the building:
+A regular employee can enter the office floor
+A manager can enter the meeting room
+An admin can access the server room
+
+[ Inside Building ]
+   |
+   +--> Office Floor (Employee)
+   |
+   +--> Meeting Room (Manager)
+   |
+   +--> Server Room (Admin)
+
+✅ Quick Analogy
+Authentication = Key to the building 🏢
+Authorization = Keys to specific rooms inside 🔑
+
+🔑 What’s Happening
+Authorization: → This is the header the server looks at to check if you’re allowed to access something.
+Bearer → This is the type of authentication. "Bearer" just means “I’m giving you a token (like a ticket) — please accept it.”
+
+${token} → This is your actual token value, usually a long string (like eyJhbGciOiJIUzI1NiIs...). It proves your identity.
+
+
+📌 Example in a Real Request
+GET /api/user/profile HTTP/1.1
+Host: myapp.com
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+
+GET /api/user/profile → You’re asking the server for your profile.
+Authorization: Bearer ... → You’re showing the ticket/token that proves you’re allowed to see it.
+=====================================================
